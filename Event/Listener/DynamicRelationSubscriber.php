@@ -31,39 +31,39 @@ class DynamicRelationSubscriber implements EventSubscriber
     {
         $metadata = $eventArgs->getClassMetadata();
         if ($metadata->getName() == $this->tenantClass) {
-            $metadata->mapManyToMany(array(
+            $metadata->mapManyToMany([
                 'targetEntity'  => $this->userClass,
                 'fieldName'     => 'userTenants',
-                'cascade'       => array('persist'),
-                'joinTable'     => array(
+                'cascade'       => ['persist'],
+                'joinTable'     => [
                     'name'        => 'tenant_users',
-                    'joinColumns' => array(
-                        array(
+                    'joinColumns' => [
+                        [
                             'name'                  => 'user_id',
                             'referencedColumnName'  => 'id'
-                        ),
-                    ),
-                    'inverseJoinColumns'    => array(
-                        array(
+                        ],
+                    ],
+                    'inverseJoinColumns'    => [
+                        [
                             'name'                  => 'tenant_id',
                             'referencedColumnName'  => 'id'
-                        ),
-                    )
+                        ],
+                    ]
                 )
-            ));
+            ]);
         }
 
         if ($metadata->getName() == $this->userClass) {
-            $metadata->mapManyToOne(array(
+            $metadata->mapManyToOne([
                 'targetEntity' => $this->tenantClass,
                 'fieldName'    => 'owner',
-                'cascade'       => array('persist'),
-                'joinColumn'     => array(
-                    'name'        => 'owner_id',
+                'cascade'      => ['persist'],
+                'joinColumn'   => [
+                    'name'                 => 'owner_id',
                     'referencedColumnName' => 'id',
-                    'nullable' => true
-                )
-            ));
+                    'nullable'             => true
+                ]
+            ]);
         }
 
     }
