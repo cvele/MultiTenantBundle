@@ -107,7 +107,7 @@ class Tenant implements TenantInterface
      *
      * @return self
      */
-    public function setOwner($owner)
+    public function setOwner(TenantAwareUserInterface $owner)
     {
         $this->owner = $owner;
 
