@@ -1,4 +1,4 @@
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148/small.png)](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148/big.png)](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148)
 
 
 Getting Started With CveleMultiTenantBundle
