@@ -43,13 +43,13 @@ class DynamicRelationSubscriber implements EventSubscriber
                             'referencedColumnName'  => 'id'
                         ],
                     ],
-                    'inverseJoinColumns'    => [
+                    'inverseJoinColumns' => [
                         [
                             'name'                  => 'tenant_id',
                             'referencedColumnName'  => 'id'
                         ],
                     ]
-                )
+                ]
             ]);
         }
 
