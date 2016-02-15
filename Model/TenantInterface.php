@@ -21,7 +21,7 @@ interface TenantInterface
 
     public function getUsers();
 
-    // public function getOwner();
+    public function getOwner();
 
-    // public function setOwner(TenantAwareUserInterface $user);
+    public function setOwner(TenantAwareUserInterface $user);
 }
