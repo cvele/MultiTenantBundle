@@ -7,7 +7,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Cvele\MultiTenantBundle\Model\TenantInterface;
 use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
@@ -76,7 +75,7 @@ class TenantListener implements EventSubscriberInterface
 			}
 		}
 
-		if (isset($response) and $response instanceof RedirectResponse) {
+		if (isset($response) && $response instanceof RedirectResponse) {
 			return $response;
 		}
 	}
