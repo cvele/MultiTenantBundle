@@ -95,10 +95,10 @@ class Tenant implements TenantInterface
      *
      * @return mixed
      */
-    // public function getOwner()
-    // {
-    //     return $this->owner;
-    // }
+    public function getOwner()
+    {
+        return $this->owner;
+    }
 
     /**
      * Sets the value of owner.
@@ -107,12 +107,12 @@ class Tenant implements TenantInterface
      *
      * @return self
      */
-    // public function setOwner($owner)
-    // {
-    //     $this->owner = $owner;
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function __toString()
     {

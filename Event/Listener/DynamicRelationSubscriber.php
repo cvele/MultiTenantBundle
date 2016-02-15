@@ -30,29 +30,41 @@ class DynamicRelationSubscriber implements EventSubscriber
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
     {
         $metadata = $eventArgs->getClassMetadata();
-        if ($metadata->getName() != $this->tenantClass) {
-            return;
+        if ($metadata->getName() == $this->tenantClass) {
+            $metadata->mapManyToMany(array(
+                'targetEntity'  => $this->userClass,
+                'fieldName'     => 'userTenants',
+                'cascade'       => array('persist'),
+                'joinTable'     => array(
+                    'name'        => 'tenant_users',
+                    'joinColumns' => array(
+                        array(
+                            'name'                  => 'user_id',
+                            'referencedColumnName'  => 'id'
+                        ),
+                    ),
+                    'inverseJoinColumns'    => array(
+                        array(
+                            'name'                  => 'tenant_id',
+                            'referencedColumnName'  => 'id'
+                        ),
+                    )
+                )
+            ));
         }
 
-        $metadata->mapManyToMany(array(
-            'targetEntity'  => $this->userClass,
-            'fieldName'     => 'userTenants',
-            'cascade'       => array('persist'),
-            'joinTable'     => array(
-                'name'        => 'tenant_users',
-                'joinColumns' => array(
-                    array(
-                        'name'                  => 'user_id',
-                        'referencedColumnName'  => 'id'
-                    ),
-                ),
-                'inverseJoinColumns'    => array(
-                    array(
-                        'name'                  => 'tenant_id',
-                        'referencedColumnName'  => 'id'
-                    ),
+        if ($metadata->getName() == $this->userClass) {
+            $metadata->mapManyToOne(array(
+                'targetEntity' => $this->tenantClass,
+                'fieldName'    => 'owner',
+                'cascade'       => array('persist'),
+                'joinColumn'     => array(
+                    'name'        => 'owner_id',
+                    'referencedColumnName' => 'id',
+                    'nullable' => true
                 )
-            )
-        ));
+            ));
+        }
+
     }
 }
