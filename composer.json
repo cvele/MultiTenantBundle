@@ -1,0 +1,27 @@
+{
+    "name": "cvele/multitenant-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony CveleMultiTenantBundle",
+    "keywords": ["User multitenancy"],
+    "homepage": "http://github.com/cvele/CveleMultiTenantBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir Cvetic",
+            "email": "vladimir@ferdinand.rs"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": { "Cvele\\MultiTenantBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.1-dev"
+        }
+    }
+}
