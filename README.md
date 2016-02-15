@@ -4,6 +4,7 @@ Getting Started With CveleMultiTenantBundle
 ==================================
 
 This bundle aims to priovide multi tenant solution for web applications build with Symfony 2.
+Bundle has been tested with FOSUserBundle and is still far away from production ready status.
 
 Prerequisites
 -------------
