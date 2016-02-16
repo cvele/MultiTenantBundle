@@ -33,20 +33,21 @@ Composer will install the bundle to your project's ``vendor/cvele/multitenant-bu
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable the bundle in the kernel::
+Enable the bundle in the kernel:
 
-    <?php
-    // app/AppKernel.php
+```php-annotations
+<?php
+// app/AppKernel.php
 
-    public function registerBundles()
-    {
-        $bundles = array(
-            // ...
-            new Cvele\MultiTenantBundle\MultiTenantBundle(),
-            // ...
-        );
-    }
-
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Cvele\MultiTenantBundle\MultiTenantBundle(),
+        // ...
+    );
+}
+```
 Step 3: Create your Tenant class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -60,80 +61,73 @@ Step 3: Create your Tenant class
 a) Doctrine ORM Tenant class
 ..........................
 
+```php-annotations
+<?php
+// src/AppBundle/Entity/Tenant.php
 
-.. configuration-block::
+namespace AppBundle\Entity;
 
-    .. code-block:: php-annotations
+use Cvele\MultiTenantBundle\Model\Tenant as BaseTenant;
+use Doctrine\ORM\Mapping as ORM;
 
-        <?php
-        // src/AppBundle/Entity/Tenant.php
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="tenants")
+ */
+class Tenant extends BaseTenant
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
-        namespace AppBundle\Entity;
-
-        use Cvele\MultiTenantBundle\Model\Tenant as BaseTenant;
-        use Doctrine\ORM\Mapping as ORM;
-
-        /**
-         * @ORM\Entity
-         * @ORM\Table(name="tenants")
-         */
-        class Tenant extends BaseTenant
-        {
-            /**
-             * @ORM\Id
-             * @ORM\Column(type="integer")
-             * @ORM\GeneratedValue(strategy="AUTO")
-             */
-            protected $id;
-
-            public function __construct()
-            {
-                parent::__construct();
-                // your own logic
-            }
-        }
-
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
 Step 4: Setup your User class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For the sake of this example we will use User class as it would look like for FOSUserBundle.
 
-.. configuration-block::
+```php-annotations
+<?php
+// src/AppBundle/Entity/User.php
 
-    .. code-block:: php-annotations
+namespace AppBundle\Entity;
 
-        <?php
-        // src/AppBundle/Entity/User.php
+use FOS\UserBundle\Model\User as BaseUser;
+use Cvele\MultiTenantBundle\Model\Traits\TenantAwareUserTrait;
+use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
+use Doctrine\ORM\Mapping as ORM;
 
-        namespace AppBundle\Entity;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ */
+class User extends BaseUser implements TenantAwareUserInterface
+{
+    use TenantAwareUserTrait;
 
-        use FOS\UserBundle\Model\User as BaseUser;
-        use Cvele\MultiTenantBundle\Model\Traits\TenantAwareUserTrait;
-        use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
-        use Doctrine\ORM\Mapping as ORM;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
-        /**
-         * @ORM\Entity
-         * @ORM\Table(name="users")
-         */
-        class User extends BaseUser implements TenantAwareUserInterface
-        {
-            use TenantAwareUserTrait;
-
-            /**
-             * @ORM\Id
-             * @ORM\Column(type="integer")
-             * @ORM\GeneratedValue(strategy="AUTO")
-             */
-            protected $id;
-
-            public function __construct()
-            {
-                parent::__construct();
-                // your own logic
-            }
-        }
-
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
 Step 5: Configure your application's security.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -143,16 +137,13 @@ This is accomplished with custom login success handler.
 
 To use default success handler edit your security.yml:
 
-.. configuration-block::
-
-    .. code-block:: yaml
-
-        # app/config/security.yml
-        firewalls:
-            main:
-                form_login:
-                    success_handler: multi_tenant.handler.user_login_redirect_handler
-
+```yaml
+# app/config/security.yml
+firewalls:
+    main:
+        form_login:
+            success_handler: multi_tenant.handler.user_login_redirect_handler
+```
 
 Step 6: Configure the MultiTenantBundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -164,18 +155,15 @@ the specific needs of your application.
 Add the following configuration to your ``config.yml`` file according to which type
 of datastore you are using.
 
-.. configuration-block::
-
-    .. code-block:: yaml
-
-        # app/config/config.yml
-        multi_tenant:
-            user_entity_class: AppBundle\Entity\User
-            tenant_entity_class: AppBundle\Entity\Tenant
-            logout_route: fos_user_security_logout
-            redirect_after_login_route: dashboard
-            pick_tenant_route: pick_tenant
-
+```yml
+# app/config/config.yml
+multi_tenant:
+    user_entity_class: AppBundle\Entity\User
+    tenant_entity_class: AppBundle\Entity\Tenant
+    logout_route: fos_user_security_logout
+    redirect_after_login_route: dashboard
+    pick_tenant_route: pick_tenant
+```
 Step 7: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
