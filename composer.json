@@ -1,7 +1,7 @@
 {
     "name": "cvele/multitenant-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony CveleMultiTenantBundle",
+    "description": "Symfony MultiTenantBundle",
     "keywords": ["User multitenancy"],
     "homepage": "http://github.com/cvele/CveleMultiTenantBundle",
     "license": "MIT",

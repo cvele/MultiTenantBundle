@@ -1,4 +1,4 @@
-Getting Started With CveleMultiTenantBundle
+Getting Started With MultiTenantBundle
 ==================================
 
 This bundle aims to priovide multi tenant solution for web applications build with Symfony 2.
@@ -11,15 +11,15 @@ This version of the bundle requires Symfony 2.4+.
 Installation
 ------------
 
-1. Download CveleMultiTenantBundle using composer
+1. Download MultiTenantBundle using composer
 2. Enable the Bundle
 3. Create your Tenant class
 4. Setup your User class
 5. Configure your application's security.yml
-6. Configure the CveleMultiTenantBundle
+6. Configure the MultiTenantBundle
 7. Update your database schema
 
-Step 1: Download CveleMultiTenantBundle using composer
+Step 1: Download MultiTenantBundle using composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Require the bundle with composer:
@@ -42,7 +42,7 @@ Enable the bundle in the kernel::
     {
         $bundles = array(
             // ...
-            new Cvele\MultiTenantBundle\CveleMultiTenantBundle(),
+            new Cvele\MultiTenantBundle\MultiTenantBundle(),
             // ...
         );
     }
@@ -58,7 +58,7 @@ Step 3: Create your Tenant class
     When you extend from the mapped superclass provided by the bundle, don't
     redefine the mapping for the other fields as it is provided by the bundle.
 
-CveleMultiTenantBundle currently supports only Doctrine ORM.
+MultiTenantBundle currently supports only Doctrine ORM.
 
 .. note::
 
@@ -163,11 +163,11 @@ To use default success handler edit your security.yml:
                     success_handler: cvele_tenant.handler.user_login_redirect_handler
 
 
-Step 6: Configure the CveleMultiTenantBundle
+Step 6: Configure the MultiTenantBundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now that you have properly configured your application's ``security.yml`` to work
-with the CveleMultiTenantBundle, the next step is to configure the bundle to work with
+with the MultiTenantBundle, the next step is to configure the bundle to work with
 the specific needs of your application.
 
 Add the following configuration to your ``config.yml`` file according to which type
