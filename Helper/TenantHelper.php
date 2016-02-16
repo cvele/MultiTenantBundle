@@ -24,6 +24,11 @@ class TenantHelper
 		$this->manager = $manager;
 	}
 
+	public function setCurrentTenant(TenantInterface $tenant)
+	{
+		$this->session->set('tenant_id', $tenant->getId());
+	}
+
 	public function isUserTenantOwner(TenantAwareUserInterface $user)
 	{
 		return ($object->getTenant()->getOwner() === $user);
