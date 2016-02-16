@@ -24,6 +24,11 @@ class TenantHelper
 		$this->manager = $manager;
 	}
 
+	public function isUserTenantOwner(TenantAwareUserInterface $user)
+	{
+		return ($object->getTenant()->getOwner() === $user);
+	}
+
 	public function isTenantObjectOwner($object)
 	{
 		if (!($object instanceof TenantAwareEntityInterface))
