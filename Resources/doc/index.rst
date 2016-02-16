@@ -1,5 +1,5 @@
 Getting Started With MultiTenantBundle
-==================================
+===============================
 
 This bundle aims to priovide multi tenant solution for web applications build with Symfony 2.
 

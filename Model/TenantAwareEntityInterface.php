@@ -11,5 +11,5 @@ interface TenantAwareEntityInterface
 {
     public function getTenant();
 
-    protected function setTenant(TenantInterface $tenant);
+    public function setTenant(TenantInterface $tenant);
 }
