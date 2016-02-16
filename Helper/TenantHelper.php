@@ -50,4 +50,13 @@ class TenantHelper
 		$tenant->removeUser($user);
 		$this->manager->updateTenant($tenant);
 	}
+
+	public function createTenant($name, TenantAwareUserInterface $owner)
+	{
+		$tenant = $this->manager->createTenant();
+		$tenant->setName($name);
+		$tenant->setOwner($owner);
+		$this->manager->updateTenant($tenant);
+		return $tenant;
+	}
 }
