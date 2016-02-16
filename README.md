@@ -26,7 +26,7 @@ Documentation
 --------------
 The source of the documentation is stored in the Resources/doc/ folder in this bundle.
 
-[Read Documentation for master](https://github.com/cvele/MultiTenantBundle/blob/master/Resources/doc/index.rst)
+[Read Documentation for master](https://github.com/cvele/MultiTenantBundle/blob/master/Resources/doc/index.md)
 
 Reporting an issue or a feature request
 ---------------------------------------
