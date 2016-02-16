@@ -4,6 +4,9 @@ namespace Cvele\MultiTenantBundle\Helper;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Cvele\MultiTenantBundle\Model\TenantAwareEntityInterface;
+use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
+use Cvele\MultiTenantBundle\Model\TenantInterface;
+use Cvele\MultiTenantBundle\Model\TenantManager;
 
 class TenantHelper
 {
@@ -12,9 +15,13 @@ class TenantHelper
 	 */
 	protected $session;
 
-	public function __construct(Session $session)
+	/**
+	 * @var TenantManager
+	 */
+	public function __construct(Session $session, TenantManager $manager)
 	{
 		$this->session = $session;
+		$this->manager = $manager;
 	}
 
 	public function isTenantObjectOwner($object)
@@ -25,5 +32,17 @@ class TenantHelper
 		}
 
 		return ($object->getTenant()->getId() === $this->session->get('tenant_id'));
+	}
+
+	public function addUserToTenant(TenantAwareUserInterface $user, TenantInterface $tenant)
+	{
+		$tenant->addUser($user);
+		$this->manager->updateTenant($tenant);
+	}
+
+	public function removeUserFromTenant(TenantAwareUserInterface $user, TenantInterface $tenant)
+	{
+		$tenant->removeUser($user);
+		$this->manager->updateTenant($tenant);
 	}
 }
