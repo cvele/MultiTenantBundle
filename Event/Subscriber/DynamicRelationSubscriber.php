@@ -74,7 +74,7 @@ class DynamicRelationSubscriber implements EventSubscriber
                 'joinColumn'   => [
                     'name'                 => 'tenant_id',
                     'referencedColumnName' => 'id',
-                    'nullable'             => true
+                    'nullable'             => false
                 ]
             ]);
         }
