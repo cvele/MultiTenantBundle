@@ -23,5 +23,8 @@
         "branch-alias": {
             "dev-master": "0.0.1-dev"
         }
-    }
+    },
+    "suggest": {
+        "friendsofsymfony/user-bundle": "MultiTenantBundle has been thurley tested to work with FOSUserBundle"
+    },
 }
