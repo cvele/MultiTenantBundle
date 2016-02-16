@@ -26,5 +26,5 @@
     },
     "suggest": {
         "friendsofsymfony/user-bundle": "MultiTenantBundle has been thurley tested to work with FOSUserBundle"
-    },
+    }
 }
