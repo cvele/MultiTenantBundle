@@ -20,6 +20,8 @@ Features
 - Tenants can be switched on the fly, with URL parameter or via helper method
 - Traits for enteties that need to belong to tenants
 
+**Note** *Bundle currently supports only Doctrine ORM for storage.*
+
 Documentation
 --------------
 The source of the documentation is stored in the Resources/doc/ folder in this bundle.
