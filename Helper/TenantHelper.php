@@ -24,6 +24,16 @@ class TenantHelper
 		$this->manager = $manager;
 	}
 
+	public function getCurrentTenant()
+	{
+		$tenantId = $this->session->get('tenant_id', null);
+		if (empty($tenantId)) {
+			return null;
+		}
+
+		return $this->manager->findTenantBy(['id' => $tenantId]);
+	}
+
 	public function setCurrentTenant(TenantInterface $tenant)
 	{
 		$this->session->set('tenant_id', $tenant->getId());
