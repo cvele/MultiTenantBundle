@@ -26,7 +26,7 @@ Require the bundle with composer:
 
 ```bash 
 $ composer require cvele/multitenant-bundle "dev-master"
-zzz
+```
 
 Composer will install the bundle to your project's vendor/cvele/multitenant-bundle directory.
 
