@@ -9,19 +9,19 @@ use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
  */
 interface TenantInterface
 {
-	public function getId();
+	function getId();
 
-	public function setName($name);
+	function setName($name);
 
-	public function getName();
+	function getName();
 
-	public function addUser(TenantAwareUserInterface $user);
+	function addUser(TenantAwareUserInterface $user);
 
-    public function removeUser(TenantAwareUserInterface $user);
+    function removeUser(TenantAwareUserInterface $user);
 
-    public function getUsers();
+    function getUsers();
 
-    public function getOwner();
+    function getOwner();
 
-    public function setOwner(TenantAwareUserInterface $user);
+    function setOwner(TenantAwareUserInterface $user);
 }

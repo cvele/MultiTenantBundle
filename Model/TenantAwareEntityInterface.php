@@ -9,7 +9,7 @@ use Cvele\MultiTenantBundle\Model\TenantInterface;
  */
 interface TenantAwareEntityInterface
 {
-    public function getTenant();
+    function getTenant();
 
-    public function setTenant(TenantInterface $tenant);
+    function setTenant(TenantInterface $tenant);
 }

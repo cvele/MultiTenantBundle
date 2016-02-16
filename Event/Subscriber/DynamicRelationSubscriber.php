@@ -1,6 +1,6 @@
 <?php
 
-namespace Cvele\MultiTenantBundle\Event\Listener;
+namespace Cvele\MultiTenantBundle\Event\Subscriber;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
