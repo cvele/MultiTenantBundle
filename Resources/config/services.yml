@@ -9,6 +9,10 @@ services:
         class: Cvele\MultiTenantBundle\Model\TenantManager
         arguments: [@doctrine.orm.entity_manager, %multi_tenant.tenant_entity%]
 
+    multi_tenant.helper:
+        class: Cvele\MultiTenantBundle\Helper\TenantHelper
+        arguments: [@session]
+
     multi_tenant.dynamic_relation.subscriber:
         class: Cvele\MultiTenantBundle\Event\Subscriber\DynamicRelationSubscriber
         arguments: [%multi_tenant.user_entity%, %multi_tenant.tenant_entity%]
