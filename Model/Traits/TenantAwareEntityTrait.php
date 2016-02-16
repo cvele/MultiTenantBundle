@@ -28,7 +28,7 @@ trait TenantAwareEntityTrait
      *
      * @return self
      */
-    protected function setTenant(TenantInterface $tenant)
+    public function setTenant(TenantInterface $tenant)
     {
         $this->tenant = $tenant;
 
