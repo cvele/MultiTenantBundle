@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('cvele_multi_tenant');
+        $rootNode = $treeBuilder->root('multi_tenant');
 
         $rootNode
             ->children()

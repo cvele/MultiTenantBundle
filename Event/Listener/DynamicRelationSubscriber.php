@@ -66,5 +66,18 @@ class DynamicRelationSubscriber implements EventSubscriber
             ]);
         }
 
+        if (in_array('Cvele\MultiTenantBundle\Model\TenantAwareEntityInterface', class_implements($metadata->getName()))) {
+            $metadata->mapOneToMany([
+                'targetEntity' => $this->tenantClass,
+                'fieldName'    => 'tenant',
+                'cascade'      => ['persist'],
+                'joinColumn'   => [
+                    'name'                 => 'tenant_id',
+                    'referencedColumnName' => 'id',
+                    'nullable'             => true
+                ]
+            ]);
+        }
+
     }
 }

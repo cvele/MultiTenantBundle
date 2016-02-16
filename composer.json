@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "Symfony MultiTenantBundle",
     "keywords": ["User multitenancy"],
-    "homepage": "http://github.com/cvele/CveleMultiTenantBundle",
+    "homepage": "http://github.com/cvele/MultiTenantBundle",
     "license": "MIT",
     "authors": [
         {

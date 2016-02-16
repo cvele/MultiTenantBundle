@@ -160,7 +160,7 @@ To use default success handler edit your security.yml:
         firewalls:
             main:
                 form_login:
-                    success_handler: cvele_tenant.handler.user_login_redirect_handler
+                    success_handler: multi_tenant.handler.user_login_redirect_handler
 
 
 Step 6: Configure the MultiTenantBundle
@@ -178,7 +178,7 @@ of datastore you are using.
     .. code-block:: yaml
 
         # app/config/config.yml
-        cvele_multi_tenant:
+        multi_tenant:
             user_entity_class: AppBundle\Entity\User
             tenant_entity_class: AppBundle\Entity\Tenant
             logout_route: fos_user_security_logout

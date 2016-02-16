@@ -39,7 +39,7 @@ EOT
     {
         $tenantName = $input->getArgument('name');
 
-        $manager = $this->getContainer()->get('cvele_tenant.tenant_manager');
+        $manager = $this->getContainer()->get('multi_tenant.tenant_manager');
         $tenant = $manager->createTenant();
         $tenant->setName($tenantName);
         $manager->updateTenant($tenant);

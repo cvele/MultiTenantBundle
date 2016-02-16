@@ -25,10 +25,10 @@ class MultiTenantExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('cvele_tenant.logout_route', $config['logout_route']);
-        $container->setParameter('cvele_tenant.redirect_after_login_route', $config['redirect_after_login_route']);
-        $container->setParameter('cvele_tenant.pick_tenant_route', $config['pick_tenant_route']);
-        $container->setParameter('cvele_tenant.user_entity', $config['user_entity_class']);
-        $container->setParameter('cvele_tenant.tenant_entity', $config['tenant_entity_class']);
+        $container->setParameter('multi_tenant.logout_route', $config['logout_route']);
+        $container->setParameter('multi_tenant.redirect_after_login_route', $config['redirect_after_login_route']);
+        $container->setParameter('multi_tenant.pick_tenant_route', $config['pick_tenant_route']);
+        $container->setParameter('multi_tenant.user_entity', $config['user_entity_class']);
+        $container->setParameter('multi_tenant.tenant_entity', $config['tenant_entity_class']);
     }
 }
