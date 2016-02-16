@@ -24,11 +24,11 @@ Step 1: Download MultiTenantBundle using composer
 
 Require the bundle with composer:
 
-.. code-block:: bash
+```bash 
+$ composer require cvele/multitenant-bundle "dev-master"
+zzz
 
-    $ composer require cvele/multitenant-bundle "dev-master"
-
-Composer will install the bundle to your project's ``vendor/cvele/multitenant-bundle`` directory.
+Composer will install the bundle to your project's vendor/cvele/multitenant-bundle directory.
 
 Step 2: Enable the bundle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,6 +172,6 @@ created in Step 4.
 
 For ORM run the following command.
 
-.. code-block:: bash
-
-    $ php app/console doctrine:schema:update --force
+```bash
+$ php app/console doctrine:schema:update --force
+```
