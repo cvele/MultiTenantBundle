@@ -53,18 +53,9 @@ Step 3: Create your Tenant class
 1. Extend the base ``Tenant`` class from the Model directory
 2. Map the ``id`` field. It must be protected as it is inherited from the parent class.
 
-.. caution::
+**Caution:** *When you extend from the mapped superclass provided by the bundle, don't redefine the mapping for the other fields as it is provided by the bundle.*
 
-    When you extend from the mapped superclass provided by the bundle, don't
-    redefine the mapping for the other fields as it is provided by the bundle.
-
-MultiTenantBundle currently supports only Doctrine ORM.
-
-.. note::
-
-    The doc uses a bundle named ``AppBundle`` according to the Symfony best
-    practices. However, you can of course place your user class in the bundle
-    you want.
+**Note:** *The doc uses a bundle named ``AppBundle`` according to the Symfony best practices. However, you can of course place your user class in the bundle you want.*
 
 a) Doctrine ORM Tenant class
 ..........................
@@ -196,4 +187,4 @@ For ORM run the following command.
 
 .. code-block:: bash
 
-    $ php bin/console doctrine:schema:update --force
+    $ php app/console doctrine:schema:update --force
