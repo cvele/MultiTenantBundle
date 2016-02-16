@@ -20,8 +20,7 @@ Installation
 7. Update your database schema
 
 Step 1: Download MultiTenantBundle using composer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+------------
 Require the bundle with composer:
 
 ```bash 
@@ -31,7 +30,7 @@ $ composer require cvele/multitenant-bundle "dev-master"
 Composer will install the bundle to your project's vendor/cvele/multitenant-bundle directory.
 
 Step 2: Enable the bundle
-~~~~~~~~~~~~~~~~~~~~~~~~~
+------------
 
 Enable the bundle in the kernel::
 ```php
@@ -48,7 +47,7 @@ public function registerBundles()
 }
 ```
 Step 3: Create your Tenant class
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------
 
 1. Extend the base ``Tenant`` class from the Model directory
 2. Map the ``id`` field. It must be protected as it is inherited from the parent class.
@@ -57,8 +56,7 @@ Step 3: Create your Tenant class
 
 **Note:** *The doc uses a bundle named ``AppBundle`` according to the Symfony best practices. However, you can of course place your user class in the bundle you want.*
 
-a) Doctrine ORM Tenant class
-..........................
+**a) Doctrine ORM Tenant class**
 
 ```php-annotations
 <?php
@@ -90,8 +88,7 @@ class Tenant extends BaseTenant
 }
 ```
 Step 4: Setup your User class
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+------------
 For the sake of this example we will use User class as it would look like for FOSUserBundle.
 
 ```php-annotations
@@ -128,7 +125,7 @@ class User extends BaseUser implements TenantAwareUserInterface
 }
 ```
 Step 5: Configure your application's security.yml
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------
 
 Users belong to more then one tenant, when this is the case we need to provide a way for user
 to pick which tenant he wishes to login to. We will do this by presenting user with a list of all tenants he belongs to.
@@ -145,7 +142,7 @@ firewalls:
 ```
 
 Step 6: Configure the MultiTenantBundle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------
 
 Now that you have properly configured your application's ``security.yml`` to work
 with the MultiTenantBundle, the next step is to configure the bundle to work with
@@ -164,13 +161,13 @@ multi_tenant:
     pick_tenant_route: pick_tenant
 ```
 Step 7: Update your database schema
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------
 
 Now that the bundle is configured, the last thing you need to do is update your
 database schema because you have added a new entity, the ``User`` class which you
 created in Step 4.
 
-For ORM run the following command.
+For ORM run the following command:
 
 ```bash
 $ php app/console doctrine:schema:update --force
