@@ -164,7 +164,7 @@ Step 7: Update your database schema
 ------------
 
 Now that the bundle is configured, the last thing you need to do is update your
-database schema because you have added a new entity, the ``User`` class which you
+database schema because you have added a new entity, the ``Tenant`` class which you
 created in Step 4.
 
 For ORM run the following command:
