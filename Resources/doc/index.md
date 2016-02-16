@@ -58,7 +58,7 @@ Step 3: Create your Tenant class
 
 **a) Doctrine ORM Tenant class**
 
-```php-annotations
+```php
 <?php
 // src/AppBundle/Entity/Tenant.php
 
@@ -91,7 +91,7 @@ Step 4: Setup your User class
 ------------
 For the sake of this example we will use User class as it would look like for FOSUserBundle.
 
-```php-annotations
+```php
 <?php
 // src/AppBundle/Entity/User.php
 
