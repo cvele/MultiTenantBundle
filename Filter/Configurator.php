@@ -2,10 +2,10 @@
 
 namespace Cvele\MultiTenantBundle\Filter;
 
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Annotations\Reader;
 use Cvele\MultiTenantBundle\Model\TenantInterface;
+use Cvele\MultiTenantBundle\Helper\TenantHelper;
 
 class Configurator
 {
