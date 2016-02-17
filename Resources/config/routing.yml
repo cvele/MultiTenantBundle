@@ -1,0 +1,3 @@
+multi_tenant_pick_tenant:
+    path:      /tenant/pick
+    defaults:  { _controller: MultiTenantBundle:Tenant:list }

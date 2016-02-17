@@ -22,11 +22,27 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('user_entity_class')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('tenant_entity_class')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('logout_route')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('redirect_after_login_route')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('pick_tenant_route')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('user_entity_class')
+                  ->isRequired()
+                  ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('tenant_entity_class')
+                  ->isRequired()
+                  ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('logout_route')
+                  ->isRequired()
+                  ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('redirect_after_login_route')
+                  ->defaultValue('multi_tenant_pick_tenant')
+                  ->isRequired()
+                  ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('pick_tenant_route')
+                  ->isRequired()
+                  ->cannotBeEmpty()
+                ->end()
             ->end();
 
         return $treeBuilder;
