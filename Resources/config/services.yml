@@ -24,3 +24,12 @@ services:
         arguments: [@doctrine.orm.entity_manager, @security.context, @router, %multi_tenant.pick_tenant_route%, %multi_tenant.redirect_after_login_route%]
         tags:
             - { name: 'monolog.logger', channel: 'security' }
+
+    multi_tenant.doctrine.filter.configurator:
+        class: Cvele\MultiTenantBundle\Filter\Configurator
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@annotation_reader"
+            - "@multi_tenant.helper"
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }

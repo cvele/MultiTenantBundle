@@ -3,9 +3,10 @@
 namespace Cvele\MultiTenantBundle\Model\Traits;
 
 use Cvele\MultiTenantBundle\Model\TenantInterface;
+use Cvele\MultiTenantBundle\Annotation\TenantAware;
 
 /**
- * @author Vladimir Cvetic <vladimir@ferdinand.rs>
+ * @TenantAware(tenantFieldName="tenant_id")
  */
 trait TenantAwareEntityTrait
 {

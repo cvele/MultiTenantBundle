@@ -1,0 +1,9 @@
+{% extends "MultiTenantBundle::layout.html.twig" %}
+
+{% block multi_tenant_content %}
+<ul>
+  {% for tenant in tenants %}
+    <li><a href="#">{{ tenant.name }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock multi_tenant_content %}

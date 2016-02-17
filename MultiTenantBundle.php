@@ -14,6 +14,7 @@ class MultiTenantBundle extends Bundle
 
         $this->addRegisterMappingsPass($container);
     }
+		
     /**
      * @param ContainerBuilder $container
      */
