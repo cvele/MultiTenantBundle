@@ -23,7 +23,7 @@ Step 1: Download MultiTenantBundle using composer
 ------------
 Require the bundle with composer:
 
-```bash 
+```bash
 $ composer require cvele/multitenant-bundle "dev-master"
 ```
 
@@ -158,7 +158,7 @@ multi_tenant:
     tenant_entity_class: AppBundle\Entity\Tenant
     logout_route: fos_user_security_logout
     redirect_after_login_route: dashboard
-    pick_tenant_route: pick_tenant
+    pick_tenant_route: multi_tenant_pick_tenant
 ```
 Step 7: Update your database schema
 ------------
