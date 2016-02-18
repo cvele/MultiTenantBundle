@@ -12,6 +12,7 @@ use Cvele\MultiTenantBundle\Model\TenantInterface;
 use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
 use Cvele\MultiTenantBundle\Model\TenantManager;
 use Cvele\MultiTenantBundle\Exception\UserHasNoTenantsException;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * @author Vladimir Cvetić <vladimir@ferdinand.rs>
@@ -23,21 +24,28 @@ class TenantListener implements EventSubscriberInterface
 	private $authorizationChecker;
 	private $logoutRoute;
 	private $currentUser = null;
+  private $tokenStorage;
 
-	public function __construct(TenantManager $tenantManager, Router $router, AuthorizationChecker $authorizationChecker, $logoutRoute)
+	public function __construct(TenantManager $tenantManager, Router $router, AuthorizationChecker $authorizationChecker, TokenStorage $tokenStorage, $logoutRoute)
 	{
-		$this->router        = $router;
-		$this->authorizationChecker       = $authorizationChecker;
-		$this->tenantManager = $tenantManager;
-		$this->logoutRoute   = $logoutRoute;
+		$this->router               = $router;
+		$this->authorizationChecker = $authorizationChecker;
+		$this->tenantManager        = $tenantManager;
+		$this->logoutRoute          = $logoutRoute;
+    $this->tokenStorage         = $tokenStorage;
 	}
 
 	public function onKernelRequest(GetResponseEvent $event)
 	{
 		$request = $event->getRequest();
+    try {
+      $isAuthenticated = $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY');
+    } catch (AuthenticationCredentialsNotFoundException $e) {
+      $isAuthenticated = false;
+    }
 
-		if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
-			$this->currentUser = $this->authorizationChecker->getToken()->getUser();
+		if ($isAuthenticated) {
+			$this->currentUser = $this->tokenStorage->getToken()->getUser();
 			if (($this->currentUser instanceof TenantAwareUserInterface) === false) {
 				/**
 				 * User does not implement TenantInterface we will skip entire process

@@ -5,6 +5,7 @@ services:
             - "@multi_tenant.tenant_manager"
             - "@router"
             - "@security.authorization_checker"
+            - "@security.token_storage"
             - "%multi_tenant.logout_route%"
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

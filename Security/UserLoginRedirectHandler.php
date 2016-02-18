@@ -17,7 +17,7 @@ class UserLoginRedirectHandler implements AuthenticationSuccessHandlerInterface
 
     public function __construct(TokenStorage $tokenStorage, $router, $pickTenantRoute, $redirectAfterLoginRoute)
     {
-        $this->tokenStorage                 = $tokenStorage;
+        $this->tokenStorage            = $tokenStorage;
         $this->router                  = $router;
         $this->redirectAfterLoginRoute = $redirectAfterLoginRoute;
         $this->pickTenantRoute         = $pickTenantRoute;
