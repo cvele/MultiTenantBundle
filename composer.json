@@ -23,11 +23,6 @@
     "autoload": {
         "psr-4": { "Cvele\\MultiTenantBundle\\": "" }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.0"
-        }
-    },
     "suggest": {
         "friendsofsymfony/user-bundle": "MultiTenantBundle has been thurley tested to work with FOSUserBundle"
     }
