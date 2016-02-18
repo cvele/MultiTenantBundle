@@ -10,14 +10,14 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class UserLoginRedirectHandler implements AuthenticationSuccessHandlerInterface
 {
-    private $context;
+    private $tokenStorage;
     private $router;
     private $pickTenantRoute;
     private $redirectAfterLoginRoute;
 
-    public function __construct(TokenStorage $context, $router, $pickTenantRoute, $redirectAfterLoginRoute)
+    public function __construct(TokenStorage $tokenStorage, $router, $pickTenantRoute, $redirectAfterLoginRoute)
     {
-        $this->context                 = $context;
+        $this->tokenStorage                 = $tokenStorage;
         $this->router                  = $router;
         $this->redirectAfterLoginRoute = $redirectAfterLoginRoute;
         $this->pickTenantRoute         = $pickTenantRoute;
@@ -25,7 +25,7 @@ class UserLoginRedirectHandler implements AuthenticationSuccessHandlerInterface
 
     public function onAuthenticationSuccess(Request $request,  TokenInterface $token)
     {
-        $user = $this->context->getToken()->getUser();
+        $user = $this->tokenStorage->getToken()->getUser();
         if ($user->getUserTenants()->count() > 1) {
             $url = $this->router->generate($this->pickTenantRoute);
             $response = new RedirectResponse($url);

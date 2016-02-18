@@ -20,14 +20,14 @@ class TenantListener implements EventSubscriberInterface
 {
   private $tenantManager;
 	private $router;
-	private $context;
+	private $authorizationChecker;
 	private $logoutRoute;
 	private $currentUser = null;
 
-	public function __construct(TenantManager $tenantManager, Router $router, AuthorizationChecker $context, $logoutRoute)
+	public function __construct(TenantManager $tenantManager, Router $router, AuthorizationChecker $authorizationChecker, $logoutRoute)
 	{
 		$this->router        = $router;
-		$this->context       = $context;
+		$this->authorizationChecker       = $authorizationChecker;
 		$this->tenantManager = $tenantManager;
 		$this->logoutRoute   = $logoutRoute;
 	}
@@ -36,8 +36,8 @@ class TenantListener implements EventSubscriberInterface
 	{
 		$request = $event->getRequest();
 
-		if ($this->context->isGranted('IS_AUTHENTICATED_FULLY')) {
-			$this->currentUser = $this->context->getToken()->getUser();
+		if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+			$this->currentUser = $this->authorizationChecker->getToken()->getUser();
 			if (($this->currentUser instanceof TenantAwareUserInterface) === false) {
 				/**
 				 * User does not implement TenantInterface we will skip entire process
