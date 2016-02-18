@@ -13,7 +13,7 @@ class TenantFilter extends SQLFilter
     public function addFilterConstraint(ClassMetadata $targetEntity, $targetTableAlias)
     {
         if (empty($this->reader)) {
-            return;
+            return '';
         }
 
         $tenantAware = $this->reader->getClassAnnotation(
@@ -22,7 +22,7 @@ class TenantFilter extends SQLFilter
         );
 
         if (!$tenantAware) {
-            return;
+            return '';
         }
 
         $fieldName = $tenantAware->tenant;
@@ -30,11 +30,11 @@ class TenantFilter extends SQLFilter
         try {
             $tenantId = $this->getParameter('id');
         } catch (\InvalidArgumentException $e) {
-            return;
+            return '';
         }
 
         if (empty($fieldName) || empty($tenantId)) {
-            return;
+            return '';
         }
 
         $query = sprintf('%s.%s = %s', $targetTableAlias, $fieldName, $tenantId);

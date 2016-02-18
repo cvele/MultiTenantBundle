@@ -10,11 +10,10 @@ class TenantController extends Controller
 {
   public function pickTenantAction(Request $request)
   {
-      $securityContext = $this->container->get('security.authorization_checker');
-      if (!$securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
+      if (!$this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
           throw new AccessDeniedException();
       }
-      $user = $securityContext->getToken()->getUser();
+      $user = $this->container->get('security.token_storage')->getToken()->getUser();
       return $this->render('MultiTenantBundle:Tenant:list.html.twig', array(
           'tenants' => $user->getUserTenants()
       ));

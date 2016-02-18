@@ -40,7 +40,7 @@ class TenantListener implements EventSubscriberInterface
 	{
 		$request = $event->getRequest();
 
-		if ($this->tokenStorage->getToken()->getUser()!=false && $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
+		if ($this->tokenStorage->getToken()!=null && $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
 			$this->currentUser = $this->tokenStorage->getToken()->getUser();
 			if (($this->currentUser instanceof TenantAwareUserInterface) === false) {
 				/**
