@@ -33,7 +33,6 @@ services:
     multi_tenant.handler.user_login_redirect_handler:
         class: Cvele\MultiTenantBundle\Security\UserLoginRedirectHandler
         arguments:
-            - "@doctrine.orm.entity_manager"
             - "@security.token_storage"
             - "@router"
             - "%multi_tenant.pick_tenant_route%"
