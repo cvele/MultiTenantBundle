@@ -1,27 +1,27 @@
 services:
     multi_tenant.tenant_listener:
         class: Cvele\MultiTenantBundle\Event\Listener\TenantListener
-        arguments: [@multi_tenant.tenant_manager, @router, @security.context, %multi_tenant.logout_route%]
+        arguments: ["@multi_tenant.tenant_manager", "@router", "@security.context", "%multi_tenant.logout_route%"]
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
     multi_tenant.tenant_manager:
         class: Cvele\MultiTenantBundle\Model\TenantManager
-        arguments: [@doctrine.orm.entity_manager, %multi_tenant.tenant_entity%]
+        arguments: ["@doctrine.orm.entity_manager", "%multi_tenant.tenant_entity%"]
 
     multi_tenant.helper:
         class: Cvele\MultiTenantBundle\Helper\TenantHelper
-        arguments: [@session]
+        arguments: ["@session"]
 
     multi_tenant.dynamic_relation.subscriber:
         class: Cvele\MultiTenantBundle\Event\Subscriber\DynamicRelationSubscriber
-        arguments: [%multi_tenant.user_entity%, %multi_tenant.tenant_entity%]
+        arguments: ["%multi_tenant.user_entity%", "%multi_tenant.tenant_entity%"]
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
     multi_tenant.handler.user_login_redirect_handler:
         class: AppBundle\Security\UserLoginRedirectHandler
-        arguments: [@doctrine.orm.entity_manager, @security.context, @router, %multi_tenant.pick_tenant_route%, %multi_tenant.redirect_after_login_route%]
+        arguments: ["@doctrine.orm.entity_manager", "@security.context", "@router", "%multi_tenant.pick_tenant_route%", "%multi_tenant.redirect_after_login_route%"]
         tags:
             - { name: 'monolog.logger', channel: 'security' }
 

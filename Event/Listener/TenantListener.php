@@ -18,7 +18,7 @@ use Cvele\MultiTenantBundle\Exception\UserHasNoTenantsException;
  */
 class TenantListener implements EventSubscriberInterface
 {
-    private $tenantManager;
+  private $tenantManager;
 	private $router;
 	private $context;
 	private $logoutRoute;
