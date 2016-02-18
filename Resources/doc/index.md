@@ -160,6 +160,15 @@ multi_tenant:
     redirect_after_login_route: dashboard
     pick_tenant_route: multi_tenant_pick_tenant
 ```
+
+Import routing:
+
+```yml
+# app/config/routing.yml
+multi_tenant:
+    resource: "@MultiTenantBundle/Resources/config/routing.yml"
+```
+
 Step 7: Update your database schema
 ------------
 
