@@ -11,7 +11,7 @@ services:
 
     multi_tenant.helper:
         class: Cvele\MultiTenantBundle\Helper\TenantHelper
-        arguments: ["@session"]
+        arguments: ["@session", "@multi_tenant.tenant_manager"]
 
     multi_tenant.dynamic_relation.subscriber:
         class: Cvele\MultiTenantBundle\Event\Subscriber\DynamicRelationSubscriber
