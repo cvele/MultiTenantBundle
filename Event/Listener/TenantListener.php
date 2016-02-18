@@ -39,13 +39,8 @@ class TenantListener implements EventSubscriberInterface
 	public function onKernelRequest(GetResponseEvent $event)
 	{
 		$request = $event->getRequest();
-    try {
-      $isAuthenticated = $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY');
-    } catch (AuthenticationCredentialsNotFoundException $e) {
-      $isAuthenticated = false;
-    }
 
-		if ($isAuthenticated) {
+		if ($this->tokenStorage->getToken()->getUser()!=false && $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
 			$this->currentUser = $this->tokenStorage->getToken()->getUser();
 			if (($this->currentUser instanceof TenantAwareUserInterface) === false) {
 				/**
