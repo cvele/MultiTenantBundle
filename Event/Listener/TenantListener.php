@@ -13,6 +13,7 @@ use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
 use Cvele\MultiTenantBundle\Model\TenantManager;
 use Cvele\MultiTenantBundle\Exception\UserHasNoTenantsException;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
 
 /**
  * @author Vladimir Cvetić <vladimir@ferdinand.rs>
