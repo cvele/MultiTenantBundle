@@ -4,7 +4,7 @@ namespace Cvele\MultiTenantBundle\Security;
 
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
@@ -15,7 +15,7 @@ class UserLoginRedirectHandler implements AuthenticationSuccessHandlerInterface
     private $pickTenantRoute;
     private $redirectAfterLoginRoute;
 
-    public function __construct(SecurityContext $context, $router, $pickTenantRoute, $redirectAfterLoginRoute)
+    public function __construct(TokenStorage $context, $router, $pickTenantRoute, $redirectAfterLoginRoute)
     {
         $this->context                 = $context;
         $this->router                  = $router;

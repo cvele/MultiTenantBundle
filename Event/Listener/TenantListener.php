@@ -6,7 +6,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Router;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Cvele\MultiTenantBundle\Model\TenantInterface;
 use Cvele\MultiTenantBundle\Model\TenantAwareUserInterface;
@@ -24,7 +24,7 @@ class TenantListener implements EventSubscriberInterface
 	private $logoutRoute;
 	private $currentUser = null;
 
-	public function __construct(TenantManager $tenantManager, Router $router, SecurityContext $context, $logoutRoute)
+	public function __construct(TenantManager $tenantManager, Router $router, AuthorizationChecker $context, $logoutRoute)
 	{
 		$this->router        = $router;
 		$this->context       = $context;
