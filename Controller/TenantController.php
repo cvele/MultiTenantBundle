@@ -15,7 +15,8 @@ class TenantController extends Controller
       }
       $user = $this->container->get('security.token_storage')->getToken()->getUser();
       return $this->render('MultiTenantBundle:Tenant:list.html.twig', array(
-          'tenants' => $user->getUserTenants()
+          'tenants' => $user->getUserTenants(),
+          'redirect_route' => $this->getParameter('multi_tenant.redirect_after_login_route')
       ));
   }
 }

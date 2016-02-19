@@ -3,7 +3,7 @@
 {% block multi_tenant_content %}
 <ul>
   {% for tenant in tenants %}
-    <li><a href="#">{{ tenant.name }}</a></li>
+    <li><a href="{{ path(redirect_route) }}?tenant_id={{ tenant.id }}">{{ tenant.name }}</a></li>
   {% endfor %}
 </ul>
 {% endblock multi_tenant_content %}

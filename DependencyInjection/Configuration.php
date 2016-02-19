@@ -35,11 +35,11 @@ class Configuration implements ConfigurationInterface
                   ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('redirect_after_login_route')
-                  ->defaultValue('multi_tenant_pick_tenant')
-                ->end()
-                ->scalarNode('pick_tenant_route')
                   ->isRequired()
                   ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('pick_tenant_route')
+                  ->defaultValue('multi_tenant_pick_tenant')
                 ->end()
             ->end();
 
