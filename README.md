@@ -5,6 +5,7 @@ When building SaaS applications more often then not you are going to need multi 
 Bundle takes care only of multitenancy ignoring all other aspects of account system your app might need (for that take a look at FOSUserBundle or something similar).
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148/mini.png)](https://insight.sensiolabs.com/projects/2b2fa3d6-3fbf-42bc-bb74-d33c67519148)
+![TravisCI](https://travis-ci.org/cvele/MultiTenantBundle.svg?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/cvele/multitenant-bundle/v/stable)](https://packagist.org/packages/cvele/multitenant-bundle)
 [![Total Downloads](https://poser.pugx.org/cvele/multitenant-bundle/downloads)](https://packagist.org/packages/cvele/multitenant-bundle)
 [![License](https://poser.pugx.org/cvele/multitenant-bundle/license)](https://packagist.org/packages/cvele/multitenant-bundle)
