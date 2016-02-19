@@ -17,8 +17,10 @@ This version of the bundle requires Symfony 2.4+ and PHP 5.4+.
 Features
 ------------
 - User can own and/or belong to multiple tenants
+- Automatic SQL filtering of tenants on supported entities
+- Entity listener inserts current tenant on supported entities
 - Tenants can be switched on the fly, with URL parameter or via helper method
-- Traits for enteties that need to belong to tenants
+- Traits for entities that need to belong to tenants
 
 **Note** *Bundle currently supports only Doctrine ORM for storage.*
 
@@ -32,4 +34,3 @@ Reporting an issue or a feature request
 ---------------------------------------
 
 Issues and feature requests are tracked in the [Github issue tracker](https://github.com/cvele/MultiTenantBundle/issues).
-
