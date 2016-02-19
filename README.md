@@ -22,6 +22,13 @@ Features
 - Tenants can be switched on the fly, with URL parameter or via helper method
 - Traits for entities that need to belong to tenants
 
+TODO List
+-------------
+
+- Create full PHPUnit test coverage
+- Make more sense in configuration variables
+- Write documentation
+
 **Note** *Bundle currently supports only Doctrine ORM for storage.*
 
 Documentation
