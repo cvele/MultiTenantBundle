@@ -85,6 +85,16 @@ class Tenant implements TenantInterface
      *
      * @return \Doctrine\Common\Collections\Collection|User[]
      */
+    public function setUsers(ArrayCollection $users)
+    {
+        return $this->users = $users;
+    }
+
+    /**
+     * Gets the value of users.
+     *
+     * @return \Doctrine\Common\Collections\Collection|User[]
+     */
     public function getUsers()
     {
         return $this->users;

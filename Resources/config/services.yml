@@ -25,8 +25,8 @@ services:
     multi_tenant.dynamic_relation.subscriber:
         class: Cvele\MultiTenantBundle\Event\Subscriber\DynamicRelationSubscriber
         arguments:
-            - "%multi_tenant.user_entity%"
             - "%multi_tenant.tenant_entity%"
+            - "%multi_tenant.user_entity%"
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
@@ -48,3 +48,11 @@ services:
             - "@multi_tenant.helper"
         tags:
             - { name: kernel.event_listener, event: kernel.request }
+
+    multi_tenant.doctrine.entity.listener:
+        class: Cvele\MultiTenantBundle\Event\Listener\EntityListener
+        arguments:
+            - "@session"
+            - "%multi_tenant.tenant_entity%"
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }

@@ -5,6 +5,7 @@ namespace Cvele\MultiTenantBundle\Event\Subscriber;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 class DynamicRelationSubscriber implements EventSubscriber
 {
@@ -30,10 +31,12 @@ class DynamicRelationSubscriber implements EventSubscriber
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
     {
         $metadata = $eventArgs->getClassMetadata();
-        if ($metadata->getName() == $this->tenantClass) {
+        if ($metadata->getName() == $this->userClass) {
             $metadata->mapManyToMany([
-                'targetEntity'  => $this->userClass,
+                'targetEntity'  => $this->tenantClass,
+								'type'					=> ClassMetadataInfo::MANY_TO_MANY,
                 'fieldName'     => 'userTenants',
+								'inversedBy' 		=> 'users',
                 'cascade'       => ['persist'],
                 'joinTable'     => [
                     'name'        => 'tenant_users',
@@ -53,9 +56,9 @@ class DynamicRelationSubscriber implements EventSubscriber
             ]);
         }
 
-        if ($metadata->getName() == $this->userClass) {
+        if ($metadata->getName() == $this->tenantClass) {
             $metadata->mapManyToOne([
-                'targetEntity' => $this->tenantClass,
+                'targetEntity' => $this->userClass,
                 'fieldName'    => 'owner',
                 'cascade'      => ['persist'],
                 'joinColumn'   => [
@@ -64,6 +67,12 @@ class DynamicRelationSubscriber implements EventSubscriber
                     'nullable'             => true
                 ]
             ]);
+
+						$metadata->mapManyToMany([
+								'targetEntity'  => $this->userClass,
+								'mappedBy'      => 'userTenants',
+								'fieldName' 		=> 'users'
+						]);
         }
 
         if (in_array('Cvele\MultiTenantBundle\Model\TenantAwareEntityInterface', class_implements($metadata->getName()))) {

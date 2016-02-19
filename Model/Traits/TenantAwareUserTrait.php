@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 trait TenantAwareUserTrait
 {
-    protected $userTenants;
+  protected $userTenants;
 
 	public function setupTenantAwareUserTrait()
 	{

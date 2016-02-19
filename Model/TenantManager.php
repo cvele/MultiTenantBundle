@@ -22,11 +22,11 @@ class TenantManager
      */
     public function __construct(ObjectManager $om, $class)
     {
-		$this->objectManager = $om;
-		$this->repository    = $om->getRepository($class);
+  		$this->objectManager = $om;
+  		$this->repository    = $om->getRepository($class);
 
-		$metadata    = $om->getClassMetadata($class);
-		$this->class = $metadata->getName();
+  		$metadata    = $om->getClassMetadata($class);
+  		$this->class = $metadata->getName();
     }
 
     /**
