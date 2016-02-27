@@ -31,7 +31,7 @@ class UserLoginRedirectHandler implements AuthenticationSuccessHandlerInterface
             $response = new RedirectResponse($url);
         }
         else {
-            $request->getSession()->set('tenant_id', $tenants->first()->getId());
+            $request->getSession()->set('tenant_id', $user->getUserTenants()->first()->getId());
             $url = $this->router->generate($this->redirectAfterLoginRoute);
             $response = new RedirectResponse($url);
         }
